@@ -1,0 +1,6 @@
+{
+  "name": "Smart Study Planner Pro",
+  "description": "An interactive, beautiful hackathon dashboard that simulates and generates clean academic study schedules, customizable subject workloads, and progressive progress trackers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
