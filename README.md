@@ -114,3 +114,6 @@ SmartStudyPlannerPro/
 
 ---
 *Created by **Alex Mercer** as a professional submission for the College Academic Hackathon.*
+## Team Contributions
+- Sanjana Sri Vangapandu
+- Harsha
