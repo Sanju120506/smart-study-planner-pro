@@ -73,7 +73,14 @@ translations = {
         "priority": "Priority Level",
         "sessions": "sessions (90-min each)",
 "brief_review": "1 brief review block",
-"insight": "Insight"
+"insight": "Insight",
+"placeholder": "Comma-separated list of subjects",
+"csv_download": "⬇️ Download Study Plan as CSV",
+"excel_download": "Excel Download (XLSX)",
+"add_subjects": "Add subjects in the sidebar to visualize parameters.",
+"home_message": "👈 Use the left sidebar to specify your subjects, target schedule, and trigger 'Generate Study Plan'!",
+"caption": "Design your path to academic excellence with Smart Study Planner Pro.",
+"subtitle": "Your ultimate AI-powered preparation companion for modern collegiate success.",
     },
 
     "हिन्दी": {
@@ -132,7 +139,14 @@ translations = {
         "priority": "प्राथमिकता स्तर",
         "sessions": "सत्र (प्रत्येक 90 मिनट)",
 "brief_review": "1 संक्षिप्त पुनरावृत्ति सत्र",
-"insight": "सुझाव"
+"insight": "सुझाव",
+"placeholder": "कॉमा द्वारा अलग किए गए विषय दर्ज करें",
+"csv_download": "⬇️ CSV के रूप में डाउनलोड करें",
+"excel_download": "Excel डाउनलोड (XLSX)",
+"add_subjects": "चार्ट देखने के लिए साइडबार में विषय जोड़ें।",
+"home_message": "👈 अपने विषय और परीक्षा तिथि दर्ज करें तथा 'अध्ययन योजना बनाएँ' पर क्लिक करें।",
+"caption": "स्मार्ट स्टडी प्लानर प्रो के साथ शैक्षणिक उत्कृष्टता की ओर अपना मार्ग तैयार करें।",
+"subtitle": "आधुनिक शैक्षणिक सफलता के लिए आपका एआई-संचालित अध्ययन साथी।",
     },
 
     "తెలుగు": {
@@ -191,7 +205,14 @@ translations = {
         "priority": "ప్రాధాన్యత",
         "sessions": "సెషన్లు (ప్రతి ఒక్కటి 90 నిమిషాలు)",
 "brief_review": "1 చిన్న పునశ్చరణ సెషన్",
-"insight": "సూచన"
+"insight": "సూచన",
+"placeholder": "కామాలతో వేరు చేసిన విషయాలను నమోదు చేయండి",
+"csv_download": "⬇️ CSVగా డౌన్‌లోడ్ చేయండి",
+"excel_download": "Excel డౌన్‌లోడ్ (XLSX)",
+"add_subjects": "చార్ట్ చూడటానికి సైడ్‌బార్‌లో విషయాలను జోడించండి.",
+"home_message": "👈 మీ విషయాలు మరియు పరీక్ష తేదీని నమోదు చేసి 'అధ్యయన ప్రణాళిక రూపొందించండి'పై క్లిక్ చేయండి.",
+"caption": "స్మార్ట్ స్టడీ ప్లానర్ ప్రోతో మీ విద్యా విజయానికి మార్గాన్ని రూపొందించండి.",
+"subtitle": "ఆధునిక విద్యా విజయానికి మీ AI ఆధారిత అధ్యయన సహచరుడు.",
     }
 }
 # Set page configuration with standard aesthetic defaults
@@ -240,7 +261,9 @@ st.markdown(
     f"<h1 class='main-header'>📚 {translations[language]['title']}</h1>",
     unsafe_allow_html=True
 )
-st.markdown("*Your ultimate AI-powered preparation companion for modern collegiate success.*")
+st.markdown(
+    f"*{translations[language]['subtitle']}*"
+)
 st.write("---")
 
 # Initialize Session States for calculations
@@ -400,7 +423,7 @@ if generate_btn or st.session_state.plan_generated:
             csv_data = df.to_csv(index=False).encode('utf-8')
             with exp_col1:
                 st.download_button(
-                    label="⬇️ Download Study Plan as CSV",
+                    label=translations[language]["csv_download"],
                     data=csv_data,
                     file_name="smart_study_planner.csv",
                     mime="text/csv",
@@ -415,7 +438,7 @@ if generate_btn or st.session_state.plan_generated:
                 excel_data = buffer.getvalue()
                 with exp_col2:
                     st.download_button(
-                        label="Excel Download (XLSX)",
+                        label=translations[language]["excel_download"],
                         data=excel_data,
                         file_name="smart_study_planner.xlsx",
                         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
@@ -450,7 +473,7 @@ if generate_btn or st.session_state.plan_generated:
                 fig.patch.set_facecolor('none')
                 st.pyplot(fig)
             else:
-                st.info("Add subjects in the sidebar to visualize parameters.")
+                st.info(translations[language]["add_subjects"])
 
         st.write("---")
         
@@ -512,7 +535,9 @@ if generate_btn or st.session_state.plan_generated:
         
         with st.container():
          st.markdown(
-        translations[language]["tips_intro"].format(name=student_name)
+            translations[language]["tips_intro"].format(
+              name=student_name
+        )
     )
 
     tips = []
@@ -532,14 +557,14 @@ if generate_btn or st.session_state.plan_generated:
 
     for idx, tip in enumerate(tips):
         st.info(
-    f"🧠 {translations[language]['insight']} #{idx+1}: {tip}"
-)
+            f"🧠 {translations[language]['insight']} #{idx+1}: {tip}"
+        )
                 
 else:
     # Onboard instruction panel
-    st.info("👈 Use the left sidebar to specify your subjects, target schedule, and trigger 'Generate Study Plan'!")
+    st.info(translations[language]["home_message"])
     st.image(
         "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=1200", 
-        caption="Design your path to academic excellence with Smart Study Planner Pro.",
+        caption=translations[language]["caption"],
         use_container_width=True
     )
