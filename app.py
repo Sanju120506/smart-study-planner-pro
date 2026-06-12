@@ -215,6 +215,28 @@ translations = {
 "subtitle": "ఆధునిక విద్యా విజయానికి మీ AI ఆధారిత అధ్యయన సహచరుడు.",
     }
 }
+subject_translations = {
+    "English": {
+        "Data Structures": "Data Structures",
+        "Database Systems": "Database Systems",
+        "Computer Networks": "Computer Networks",
+        "Operating Systems": "Operating Systems"
+    },
+
+    "हिन्दी": {
+        "Data Structures": "डेटा संरचनाएँ",
+        "Database Systems": "डेटाबेस सिस्टम",
+        "Computer Networks": "कंप्यूटर नेटवर्क",
+        "Operating Systems": "ऑपरेटिंग सिस्टम"
+    },
+
+    "తెలుగు": {
+        "Data Structures": "డేటా నిర్మాణాలు",
+        "Database Systems": "డేటాబేస్ వ్యవస్థలు",
+        "Computer Networks": "కంప్యూటర్ నెట్‌వర్క్‌లు",
+        "Operating Systems": "ఆపరేటింగ్ సిస్టమ్స్"
+    }
+}
 # Set page configuration with standard aesthetic defaults
 st.set_page_config(
     page_title="Smart Study Planner Pro",
@@ -287,6 +309,11 @@ subjects_raw = st.sidebar.text_input(
 
 # Validate and clean subjects
 subjects = [s.strip() for s in subjects_raw.split(",") if s.strip()]
+
+display_subjects = [
+    subject_translations.get(language, {}).get(subject, subject)
+    for subject in subjects
+]
 
 # Exam Date Picker
 default_exam_date = datetime.date.today() + datetime.timedelta(days=14)
@@ -393,7 +420,7 @@ if generate_btn or st.session_state.plan_generated:
 )
             
             schedule_data.append({
-    translations[language]["subject_name"]: sub,
+    translations[language]["subject_name"]: display_subjects[index],
 
     translations[language]["allocated_hours"]:
     hours_per_subject,
@@ -460,7 +487,7 @@ if generate_btn or st.session_state.plan_generated:
                 
                 wedges, texts, autotexts = ax.pie(
                     [hours_per_subject] * num_subjects, 
-                    labels=subjects, 
+                    labels=display_subjects,
                     autopct='%1.1f%%',
                     startangle=140,
                     colors=colors,
