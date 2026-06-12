@@ -11,7 +11,38 @@ import pandas as pd
 import datetime
 import matplotlib.pyplot as plt
 import io
+language = st.sidebar.selectbox(
+    "🌐 Select Language",
+    ["English", "हिन्दी", "తెలుగు"]
+)
+translations = {
+    "English": {
+        "title": "Smart Study Planner Pro",
+        "student": "Student Name",
+        "subjects": "Subjects of Interest",
+        "exam": "Target Exam Date",
+        "hours": "Daily Study Hours Available",
+        "generate": "⚡ Generate Customized Study Plan"
+    },
 
+    "हिन्दी": {
+        "title": "स्मार्ट स्टडी प्लानर प्रो",
+        "student": "छात्र का नाम",
+        "subjects": "रुचि के विषय",
+        "exam": "लक्ष्य परीक्षा तिथि",
+        "hours": "प्रतिदिन अध्ययन के घंटे",
+        "generate": "⚡ व्यक्तिगत अध्ययन योजना बनाएँ"
+    },
+
+    "తెలుగు": {
+        "title": "స్మార్ట్ స్టడీ ప్లానర్ ప్రో",
+        "student": "విద్యార్థి పేరు",
+        "subjects": "ఆసక్తి గల విషయాలు",
+        "exam": "లక్ష్య పరీక్ష తేదీ",
+        "hours": "రోజువారీ అధ్యయన గంటలు",
+        "generate": "⚡ వ్యక్తిగత అధ్యయన ప్రణాళిక రూపొందించండి"
+    }
+}
 # Set page configuration with standard aesthetic defaults
 st.set_page_config(
     page_title="Smart Study Planner Pro",
@@ -54,7 +85,10 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # App Logo / Title Banner
-st.markdown("<h1 class='main-header'>📚 Smart Study Planner Pro</h1>", unsafe_allow_html=True)
+st.markdown(
+    f"<h1 class='main-header'>📚 {translations[language]['title']}</h1>",
+    unsafe_allow_html=True
+)
 st.markdown("*Your ultimate AI-powered preparation companion for modern collegiate success.*")
 st.write("---")
 
@@ -65,11 +99,14 @@ if "progress_logs" not in st.session_state:
     st.session_state.progress_logs = {}
 
 # Sidebar inputs
-st.sidebar.header("🛠️ Personalized Planner Setup")
+st.sidebar.header("🛠️ " + translations[language]["title"])
 
-student_name = st.sidebar.text_input("👤 Student Name", value="Sanjana", placeholder="Enter your name")
+student_name = st.sidebar.text_input(
+    f"👤 {translations[language]['student']}",
+    value="Sanjana"
+)
 subjects_raw = st.sidebar.text_input(
-    "📖 Subjects of Interest", 
+    f"📖 {translations[language]['subjects']}",
     value="Data Structures, Database Systems, Computer Networks, Operating Systems",
     placeholder="Comma-separated list of subjects"
 )
@@ -77,24 +114,26 @@ subjects_raw = st.sidebar.text_input(
 # Validate and clean subjects
 subjects = [s.strip() for s in subjects_raw.split(",") if s.strip()]
 
-# Exam Date Picker (Default to 14 days in the future to ensure valid calculation)
+# Exam Date Picker
 default_exam_date = datetime.date.today() + datetime.timedelta(days=14)
-exam_date = st.sidebar.date_input("📅 Target Exam Date", value=default_exam_date)
+
+exam_date = st.sidebar.date_input(
+    f"📅 {translations[language]['exam']}",
+    value=default_exam_date
+)
 
 # Study Time Slider
 hours_per_day = st.sidebar.number_input(
-    "⏱️ Daily Study Hours Available", 
-    min_value=0.5, 
-    max_value=16.0, 
-    value=4.0, 
+    f"⏱️ {translations[language]['hours']}",
+    min_value=0.5,
+    max_value=16.0,
+    value=4.0,
     step=0.5
 )
-
 generate_btn = st.sidebar.button(
-    "⚡ Generate Customized Study Plan",
+    translations[language]["generate"],
     use_container_width=True
 )
-
 # ADD THIS BELOW ↓↓↓
 
 st.sidebar.subheader("🤖 AI Settings")
