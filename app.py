@@ -4,7 +4,8 @@ Smart Study Planner Pro
 Streamlit App Entry Point
 Suitable for College Hackathon Submission
 """
-
+from langchain_groq import ChatGroq
+from langchain_ollama import ChatOllama
 import streamlit as st
 import pandas as pd
 import datetime
@@ -89,7 +90,27 @@ hours_per_day = st.sidebar.number_input(
     step=0.5
 )
 
-generate_btn = st.sidebar.button("⚡ Generate Customized Study Plan", use_container_width=True)
+generate_btn = st.sidebar.button(
+    "⚡ Generate Customized Study Plan",
+    use_container_width=True
+)
+
+# ADD THIS BELOW ↓↓↓
+
+st.sidebar.subheader("🤖 AI Settings")
+
+ai_provider = st.sidebar.radio(
+    "Choose AI Provider",
+    ["Local Ollama", "BYOK (Groq)"]
+)
+
+groq_key = ""
+
+if ai_provider == "BYOK (Groq)":
+    groq_key = st.sidebar.text_input(
+        "Enter Groq API Key",
+        type="password"
+    )
 
 # Perform basic validation checks and calculations
 today = datetime.date.today()
