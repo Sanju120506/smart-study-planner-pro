@@ -17,30 +17,181 @@ language = st.sidebar.selectbox(
 )
 translations = {
     "English": {
+        "welcome": "🎉 Welcome, {name}! Your study strategy has been successfully generated.",
+
+"tracker_title": "### 🏆 Milestone Progress Tracker",
+
+"tracker_desc": "Check off the study topics as you finish them to visualize real-time syllabus completion!",
+
+"select_subject": "Select Subject to Track",
+
+"chapter1": "Fundamental Theory Review",
+"chapter2": "Problem Solving Practice",
+"chapter3": "Past Papers Assignment",
+"chapter4": "Flashcard Consolidation",
+
+"completion": "Overall Plan Completion",
+
+"complete_msg": "🌟 Magnificent achievement! You have completed every syllabus milestone!",
+
+"progress_msg": "Keep pushing forward! Consistency builds excellence.",
+
+"start_msg": "Check off your first completed task to initiate the tracking metric!",
+
+"tips_title": "### 💡 AI Study Tips (Intelligent Custom Insights)",
+
+"tips_intro": "Applying dynamic study architectures for {name}'s high-yield performance:",
+
+"tip1": "🚨 Emergency Buffer Rule: Since your exam is only a few days away, focus on high-yield revision papers instead of learning new concepts.",
+
+"tip2": "⏳ Micro-Bite Pomodoro Method: Split study into 25-minute sessions with 5-minute breaks.",
+
+"tip3": "🧠 Distributed Practice Pattern: Use the Feynman Technique to verify deep understanding.",
+
+"tip4": "🔀 Interleaved Learning Schema: Alternate between problem-solving and theory subjects.",
+
+"tip5": "🎯 Syllabus Deep-Dive: Practice active recall after reading each topic.",
+        
         "title": "Smart Study Planner Pro",
         "student": "Student Name",
         "subjects": "Subjects of Interest",
         "exam": "Target Exam Date",
         "hours": "Daily Study Hours Available",
-        "generate": "⚡ Generate Customized Study Plan"
+        "generate": "⚡ Generate Customized Study Plan",
+
+        "days_left": "📅 Days Left",
+        "total_hours": "⏱️ Total Study Hours",
+        "active_subjects": "📚 Active Subjects",
+        "generated_plan": "### 📋 Generated Study Distribution",
+        "export": "##### 📥 Export Options",
+        "chart": "### 📊 Hour Allocation Weight",
+
+        "subject_name": "Subject Name",
+        "allocated_hours": "Allocated Hours (hrs)",
+        "revision_plan": "Recommended Revision Plan",
+        "focus_priority": "Focus Priority",
+        "priority": "Priority Level",
+        "sessions": "sessions (90-min each)",
+"brief_review": "1 brief review block",
+"insight": "Insight"
     },
 
     "हिन्दी": {
+        "welcome": "🎉 स्वागत है, {name}! आपकी अध्ययन योजना सफलतापूर्वक तैयार हो गई है।",
+
+"tracker_title": "### 🏆 प्रगति ट्रैकर",
+
+"tracker_desc": "विषयों को पूरा करने पर उन्हें चिह्नित करें और अपनी प्रगति देखें।",
+
+"select_subject": "ट्रैक करने के लिए विषय चुनें",
+
+"chapter1": "मूल सिद्धांत समीक्षा",
+"chapter2": "समस्या समाधान अभ्यास",
+"chapter3": "पिछले प्रश्नपत्र अभ्यास",
+"chapter4": "फ्लैशकार्ड पुनरावृत्ति",
+
+"completion": "कुल प्रगति",
+
+"complete_msg": "🌟 शानदार उपलब्धि! आपने सभी अध्ययन लक्ष्य पूरे कर लिए हैं।",
+
+"progress_msg": "लगातार प्रयास करते रहें। सफलता निश्चित है।",
+
+"start_msg": "अपनी पहली पूर्ण गतिविधि को चिह्नित करें।",
+
+"tips_title": "### 💡 एआई अध्ययन सुझाव",
+
+"tips_intro": "{name} के लिए स्मार्ट अध्ययन सुझाव:",
+
+"tip1": "🚨 परीक्षा निकट है, इसलिए केवल महत्वपूर्ण पुनरावृत्ति पर ध्यान दें।",
+
+"tip2": "⏳ 25 मिनट अध्ययन और 5 मिनट विश्राम की पोमोडोरो तकनीक अपनाएँ।",
+
+"tip3": "🧠 फाइनमैन तकनीक का उपयोग करके विषयों को सरल भाषा में समझाएँ।",
+
+"tip4": "🔀 विभिन्न प्रकार के विषयों को बारी-बारी से पढ़ें।",
+
+"tip5": "🎯 सक्रिय स्मरण तकनीक का उपयोग करें।",
         "title": "स्मार्ट स्टडी प्लानर प्रो",
         "student": "छात्र का नाम",
         "subjects": "रुचि के विषय",
         "exam": "लक्ष्य परीक्षा तिथि",
         "hours": "प्रतिदिन अध्ययन के घंटे",
-        "generate": "⚡ व्यक्तिगत अध्ययन योजना बनाएँ"
+        "generate": "⚡ व्यक्तिगत अध्ययन योजना बनाएँ",
+
+        "days_left": "📅 शेष दिन",
+        "total_hours": "⏱️ कुल अध्ययन घंटे",
+        "active_subjects": "📚 सक्रिय विषय",
+        "generated_plan": "### 📋 अध्ययन योजना",
+        "export": "##### 📥 निर्यात विकल्प",
+        "chart": "### 📊 घंटों का वितरण",
+
+        "subject_name": "विषय का नाम",
+        "allocated_hours": "अध्ययन घंटे",
+        "revision_plan": "पुनरावृत्ति योजना",
+        "focus_priority": "प्राथमिकता स्तर",
+        "priority": "प्राथमिकता स्तर",
+        "sessions": "सत्र (प्रत्येक 90 मिनट)",
+"brief_review": "1 संक्षिप्त पुनरावृत्ति सत्र",
+"insight": "सुझाव"
     },
 
     "తెలుగు": {
+        "welcome": "🎉 స్వాగతం {name}! మీ అధ్యయన ప్రణాళిక విజయవంతంగా రూపొందించబడింది.",
+
+"tracker_title": "### 🏆 పురోగతి ట్రాకర్",
+
+"tracker_desc": "మీరు పూర్తి చేసిన అంశాలను గుర్తించి మీ పురోగతిని చూడండి.",
+
+"select_subject": "ట్రాక్ చేయడానికి విషయం ఎంచుకోండి",
+
+"chapter1": "ప్రాథమిక సిద్ధాంత సమీక్ష",
+"chapter2": "సమస్య పరిష్కార సాధన",
+"chapter3": "గత ప్రశ్నపత్రాల సాధన",
+"chapter4": "ఫ్లాష్‌కార్డ్ పునశ్చరణ",
+
+"completion": "మొత్తం పురోగతి",
+
+"complete_msg": "🌟 అద్భుతం! మీరు అన్ని అధ్యయన లక్ష్యాలను పూర్తి చేశారు.",
+
+"progress_msg": "నిరంతర కృషి విజయానికి దారి తీస్తుంది.",
+
+"start_msg": "మీ మొదటి పూర్తి చేసిన పనిని గుర్తించండి.",
+
+"tips_title": "### 💡 AI అధ్యయన సూచనలు",
+
+"tips_intro": "{name} కోసం తెలివైన అధ్యయన సూచనలు:",
+
+"tip1": "🚨 పరీక్ష సమీపంలో ఉంది కాబట్టి ముఖ్యమైన పునశ్చరణపై దృష్టి పెట్టండి.",
+
+"tip2": "⏳ 25 నిమిషాల చదువు మరియు 5 నిమిషాల విరామంతో పోమోడోరో పద్ధతిని అనుసరించండి.",
+
+"tip3": "🧠 ఫైన్మన్ పద్ధతిని ఉపయోగించి అంశాలను వివరించండి.",
+
+"tip4": "🔀 వివిధ రకాల విషయాలను మారుస్తూ చదవండి.",
+
+"tip5": "🎯 యాక్టివ్ రీకాల్ పద్ధతిని ఉపయోగించండి.",
         "title": "స్మార్ట్ స్టడీ ప్లానర్ ప్రో",
         "student": "విద్యార్థి పేరు",
         "subjects": "ఆసక్తి గల విషయాలు",
         "exam": "లక్ష్య పరీక్ష తేదీ",
         "hours": "రోజువారీ అధ్యయన గంటలు",
-        "generate": "⚡ వ్యక్తిగత అధ్యయన ప్రణాళిక రూపొందించండి"
+        "generate": "⚡ వ్యక్తిగత అధ్యయన ప్రణాళిక రూపొందించండి",
+
+        "days_left": "📅 మిగిలిన రోజులు",
+        "total_hours": "⏱️ మొత్తం అధ్యయన గంటలు",
+        "active_subjects": "📚 క్రియాశీల విషయాలు",
+        "generated_plan": "### 📋 రూపొందించిన అధ్యయన ప్రణాళిక",
+        "export": "##### 📥 ఎగుమతి ఎంపికలు",
+        "chart": "### 📊 గంటల పంపిణీ",
+
+        "subject_name": "విషయం పేరు",
+        "allocated_hours": "కేటాయించిన గంటలు",
+        "revision_plan": "పునశ్చరణ ప్రణాళిక",
+        "focus_priority": "ప్రాధాన్యత స్థాయి",
+        "priority": "ప్రాధాన్యత",
+        "sessions": "సెషన్లు (ప్రతి ఒక్కటి 90 నిమిషాలు)",
+"brief_review": "1 చిన్న పునశ్చరణ సెషన్",
+"insight": "సూచన"
     }
 }
 # Set page configuration with standard aesthetic defaults
@@ -167,7 +318,9 @@ if generate_btn or st.session_state.plan_generated:
         st.warning("⚠️ Target exam date must be in the future! Please adjust your date picker input.")
     else:
         # Success Greeting
-        st.success(f"🎉 Welcome, {student_name}! Your study strategy has been successfully generated.")
+        st.success(
+    translations[language]["welcome"].format(name=student_name)
+)
         
         # Calculations
         num_subjects = len(subjects)
@@ -179,7 +332,7 @@ if generate_btn or st.session_state.plan_generated:
         with col1:
             st.markdown(f"""
                 <div class="metric-card">
-                    <div class="metric-label">📅 Days Left</div>
+                    <div class="metric-label">{translations[language]["days_left"]}</div>
                     <div class="metric-num">{days_left}</div>
                 </div>
             """, unsafe_allow_html=True)
@@ -187,7 +340,7 @@ if generate_btn or st.session_state.plan_generated:
         with col2:
             st.markdown(f"""
                 <div class="metric-card">
-                    <div class="metric-label">⏱️ Total Study Hours</div>
+                    <div class="metric-label">{translations[language]["total_hours"]}</div>
                     <div class="metric-num">{total_hours:.1f} hrs</div>
                 </div>
             """, unsafe_allow_html=True)
@@ -195,7 +348,7 @@ if generate_btn or st.session_state.plan_generated:
         with col3:
             st.markdown(f"""
                 <div class="metric-card" style="border-top-color: #10b981;">
-                    <div class="metric-label">📚 Active Subjects</div>
+                    <div class="metric-label">{translations[language]["active_subjects"]}</div>
                     <div class="metric-num">{num_subjects}</div>
                 </div>
             """, unsafe_allow_html=True)
@@ -210,23 +363,37 @@ if generate_btn or st.session_state.plan_generated:
         for index, sub in enumerate(subjects):
             # Formulating revision sessions (90 min blocks)
             num_pomodoros = int((hours_per_subject) / 1.5)
-            revision_blocks = f"{num_pomodoros} sessions (90-min each)" if num_pomodoros > 0 else "1 brief review block"
+            revision_blocks = (
+    f"{num_pomodoros} {translations[language]['sessions']}"
+    if num_pomodoros > 0
+    else translations[language]["brief_review"]
+)
             
             schedule_data.append({
-                "Subject Name": sub,
-                "Allocated Hours (hrs)": hours_per_subject,
-                "Recommended Revision Plan": revision_blocks,
-                "Focus Priority": f"Priority Level {min(index+1, 3)}"
-            })
+    translations[language]["subject_name"]: sub,
+
+    translations[language]["allocated_hours"]:
+    hours_per_subject,
+
+    translations[language]["revision_plan"]:
+    revision_blocks,
+
+    translations[language]["focus_priority"]:
+    f"{translations[language]['priority']} {min(index+1,3)}"
+})
             
         df = pd.DataFrame(schedule_data)
         
         with plan_col:
-            st.markdown("### 📋 Generated Study Distribution")
+            st.markdown(
+    translations[language]["generated_plan"]
+)
             st.dataframe(df, use_container_width=True, hide_index=True)
             
             # File Exports
-            st.markdown("##### 📥 Export Options")
+            st.markdown(
+    translations[language]["export"]
+)
             exp_col1, exp_col2 = st.columns(2)
             
             # CSV Download
@@ -259,7 +426,9 @@ if generate_btn or st.session_state.plan_generated:
                     st.info("💡 Direct Excel converter requires openpyxl. Use the CSV download above for seamless compatibility.")
                     
         with chart_col:
-            st.markdown("### 📊 Hour Allocation Weight")
+            st.markdown(
+    translations[language]["chart"]
+)
             if num_subjects > 0:
                 fig, ax = plt.subplots(figsize=(6, 5))
                 # Soft modern pastel palette
@@ -286,13 +455,21 @@ if generate_btn or st.session_state.plan_generated:
         st.write("---")
         
         # Interactive Student Progress Tracker section
-        st.markdown("### 🏆 Milestone Progress Tracker")
-        st.write("Check off the study topics as you finish them to visualize real-time syllabus completion!")
+        st.markdown(translations[language]["tracker_title"])
+        st.write(translations[language]["tracker_desc"])
         
         # Setup specific checkpoint data lists
-        selected_subject = st.selectbox("Select Subject to Track", subjects)
+        selected_subject = st.selectbox(
+    translations[language]["select_subject"],
+    subjects
+)
         
-        mock_chapters = ["Fundamental Theory Review", "Problem Solving Practice", "Past Papers Assignment", "Flashcard Consolidation"]
+        mock_chapters = [
+    translations[language]["chapter1"],
+    translations[language]["chapter2"],
+    translations[language]["chapter3"],
+    translations[language]["chapter4"]
+]
         
         # Track status using session state logs
         if selected_subject not in st.session_state.progress_logs:
@@ -316,45 +493,47 @@ if generate_btn or st.session_state.plan_generated:
             completed_tasks = sum(sum(v) for v in st.session_state.progress_logs.values())
             overall_pct = (completed_tasks / total_tasks * 100) if total_tasks > 0 else 0.0
             
-            st.markdown(f"#### 🎓 Overall Plan Completion: `{overall_pct:.1f}%`")
+            st.markdown(
+    f"#### 🎓 {translations[language]['completion']}: `{overall_pct:.1f}%`"
+)
             st.progress(overall_pct / 100.0)
             if overall_pct == 100.0:
                 st.balloons()
-                st.success("🌟 Magnificient achievement! You have completed every syllabus milestone!")
+                st.success(translations[language]["complete_msg"])
             elif overall_pct > 0:
-                st.info("Keep pushing forward! Consistency builds excellence.")
+                st.info(translations[language]["progress_msg"])
             else:
-                st.write("Check off your first completed task to initiate the tracking metric!")
+                st.write(translations[language]["start_msg"])
                 
         st.write("---")
         
         # AI Study Tips Section (Rule-based Intelligence)
-        st.markdown("### 💡 AI Study Tips (Intelligent Custom Insights)")
+        st.markdown(translations[language]["tips_title"])
         
         with st.container():
-            st.markdown(f"*Applying dynamic study architectures for {student_name}'s high-yield performance:*")
-            
-            tips = []
-            
-            # Rule 1: High pressure condition
-            if days_left < 7:
-                tips.append("🚨 **Emergency Buffer Rule**: Since your exam is only in a few days, focus on solving High-Yield Revision papers instead of learning brand new concepts from scratch.")
-            
-            # Rule 2: Low-mid range workload distribution
-            if hours_per_subject < 5.0:
-                tips.append("⏳ **Micro-Bite Pomodoro Method**: Split study intervals into crisp 25-minute Pomodoro sprints followed by 5-minute active recovery breaks to avoid cognitive saturation.")
-            else:
-                tips.append("🧠 **Distributed Practice Pattern**: With more than 5 hours assigned to each topic, use the Feynman Technique—attempting to explain the underlying logic in plain terms to a peer to verify deep mastery.")
-                
-            # Rule 3: High cognitive load warning (lots of subjects)
-            if num_subjects > 5:
-                tips.append("🔀 **Interleaved Learning Schema**: Alternate between highly quantitative logic subjects (e.g. data structures) and reading-heavy documentation targets (e.g. networks) to prevent mental exhaustion.")
-            else:
-                tips.append("🎯 **Syllabus Deep-Dive**: You have plenty of time per subject! Implement selective recall—read a paragraph, close the textbook, and write down everything you remember verbatim.")
-                
-            # Display tip lists in formatted quotes
-            for idx, tip in enumerate(tips):
-                st.info(f"🧬 Insight #{idx+1}: {tip}")
+         st.markdown(
+        translations[language]["tips_intro"].format(name=student_name)
+    )
+
+    tips = []
+
+    if days_left < 7:
+        tips.append(translations[language]["tip1"])
+
+    if hours_per_subject < 5.0:
+        tips.append(translations[language]["tip2"])
+    else:
+        tips.append(translations[language]["tip3"])
+
+    if num_subjects > 5:
+        tips.append(translations[language]["tip4"])
+    else:
+        tips.append(translations[language]["tip5"])
+
+    for idx, tip in enumerate(tips):
+        st.info(
+    f"🧠 {translations[language]['insight']} #{idx+1}: {tip}"
+)
                 
 else:
     # Onboard instruction panel
