@@ -354,6 +354,22 @@ if ai_provider == "BYOK (Groq)":
 
 # Perform basic validation checks and calculations
 today = datetime.date.today()
+llm = None
+
+try:
+    if ai_provider == "Local Ollama":
+        llm = ChatOllama(
+            model="llama3"
+        )
+
+    elif ai_provider == "BYOK (Groq)" and groq_key:
+        llm = ChatGroq(
+            groq_api_key=groq_key,
+            model_name="llama3-8b-8192"
+        )
+
+except Exception as e:
+    st.sidebar.error(f"AI initialization failed: {e}")
 days_left = (exam_date - today).days
 
 # Main execution panel
@@ -559,39 +575,120 @@ if generate_btn or st.session_state.plan_generated:
         
         # AI Study Tips Section (Rule-based Intelligence)
         st.markdown(translations[language]["tips_title"])
-        
-        with st.container():
-         st.markdown(
-            translations[language]["tips_intro"].format(
-              name=student_name
-        )
-    )
 
     tips = []
 
-    if days_left < 7:
-        tips.append(translations[language]["tip1"])
+    st.markdown(
+        translations[language]["tips_intro"].format(
+            name=student_name
+        )
+    )
 
-    if hours_per_subject < 5.0:
-        tips.append(translations[language]["tip2"])
-    else:
-        tips.append(translations[language]["tip3"])
+    if llm:
+        try:
 
-    if num_subjects > 5:
-        tips.append(translations[language]["tip4"])
-    else:
-        tips.append(translations[language]["tip5"])
+            prompt = f"""
+            Student Name: {student_name}
+
+            Subjects:
+            {', '.join(subjects)}
+
+            Days Left Until Exam:
+            {days_left}
+
+            Daily Study Hours:
+            {hours_per_day}
+
+            Generate 3 concise personalized study tips.
+            """
+
+            response = llm.invoke(prompt)
+
+            ai_tips = response.content.split("\n")
+
+            for tip in ai_tips:
+
+                if tip.strip():
+
+                    tips.append(tip.strip())
+
+        except Exception as e:
+
+            st.warning(
+                f"AI tips unavailable. Using built-in recommendations.\n{e}"
+            )
+
+
+    if not tips:
+
+        if days_left < 7:
+            tips.append(translations[language]["tip1"])
+
+        if hours_per_subject < 5:
+            tips.append(translations[language]["tip2"])
+        else:
+            tips.append(translations[language]["tip3"])
+
+        if num_subjects > 5:
+            tips.append(translations[language]["tip4"])
+        else:
+            tips.append(translations[language]["tip5"])
+
 
     for idx, tip in enumerate(tips):
+
         st.info(
             f"🧠 {translations[language]['insight']} #{idx+1}: {tip}"
         )
-                
-else:
-    # Onboard instruction panel
-    st.info(translations[language]["home_message"])
-    st.image(
-        "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=1200", 
-        caption=translations[language]["caption"],
-        use_container_width=True
+        st.markdown("---")
+
+    st.subheader("🤖 AI Study Assistant")
+
+    question = st.text_input(
+        "Ask anything about your studies"
     )
+
+    if st.button("Get AI Help"):
+
+        if llm:
+
+            try:
+
+                prompt = f"""
+                Student Name: {student_name}
+
+                Subjects:
+                {', '.join(subjects)}
+
+                Days Left:
+                {days_left}
+
+                Daily Study Hours:
+                {hours_per_day}
+
+                Student Question:
+                {question}
+
+                Give practical study advice.
+                """
+
+                response = llm.invoke(prompt)
+
+                st.success(response.content)
+
+            except Exception as e:
+
+                st.error(f"AI Error:\n{e}")
+
+        else:
+
+            st.warning(
+                "Please select an AI provider."
+            )
+        # Onboard instruction panel
+        st.info(translations[language]["home_message"])
+        st.image(
+            "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=1200", 
+            caption=translations[language]["caption"],
+            use_container_width=True
+        )
