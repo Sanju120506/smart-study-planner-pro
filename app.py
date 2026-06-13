@@ -81,6 +81,7 @@ translations = {
 "home_message": "👈 Use the left sidebar to specify your subjects, target schedule, and trigger 'Generate Study Plan'!",
 "caption": "Design your path to academic excellence with Smart Study Planner Pro.",
 "subtitle": "Your ultimate AI-powered preparation companion for modern collegiate success.",
+"ai_help_button": "Get AI Help",
     },
 
     "हिन्दी": {
@@ -147,6 +148,7 @@ translations = {
 "home_message": "👈 अपने विषय और परीक्षा तिथि दर्ज करें तथा 'अध्ययन योजना बनाएँ' पर क्लिक करें।",
 "caption": "स्मार्ट स्टडी प्लानर प्रो के साथ शैक्षणिक उत्कृष्टता की ओर अपना मार्ग तैयार करें।",
 "subtitle": "आधुनिक शैक्षणिक सफलता के लिए आपका एआई-संचालित अध्ययन साथी।",
+"ai_help_button": "एआई सहायता प्राप्त करें",
     },
 
     "తెలుగు": {
@@ -213,6 +215,7 @@ translations = {
 "home_message": "👈 మీ విషయాలు మరియు పరీక్ష తేదీని నమోదు చేసి 'అధ్యయన ప్రణాళిక రూపొందించండి'పై క్లిక్ చేయండి.",
 "caption": "స్మార్ట్ స్టడీ ప్లానర్ ప్రోతో మీ విద్యా విజయానికి మార్గాన్ని రూపొందించండి.",
 "subtitle": "ఆధునిక విద్యా విజయానికి మీ AI ఆధారిత అధ్యయన సహచరుడు.",
+"ai_help_button": "AI సహాయం పొందండి",
     }
 }
 subject_translations = {
@@ -644,47 +647,81 @@ if generate_btn or st.session_state.plan_generated:
 
     st.subheader("🤖 AI Study Assistant")
 
-    question = st.text_input(
-        "Ask anything about your studies"
-    )
+question = st.text_input(
+    "Ask anything about your studies"
+)
 
-    if st.button("Get AI Help"):
+if st.button(translations[language]["ai_help_button"]):
 
-        if llm:
+    if llm:
 
-            try:
+        try:
+
+            if language == "English":
 
                 prompt = f"""
                 Student Name: {student_name}
+                Subjects: {', '.join(subjects)}
+                Daily Study Hours: {hours_per_day}
+                Days Left: {days_left}
 
-                Subjects:
-                {', '.join(subjects)}
-
-                Days Left:
-                {days_left}
-
-                Daily Study Hours:
-                {hours_per_day}
-
-                Student Question:
+                Question:
                 {question}
 
-                Give practical study advice.
+                Respond only in English.
                 """
 
-                response = llm.invoke(prompt)
+            elif language == "తెలుగు":
 
-                st.success(response.content)
+                prompt = f"""
+                విద్యార్థి పేరు: {student_name}
 
-            except Exception as e:
+                విషయాలు:
+                {', '.join(subjects)}
 
-                st.error(f"AI Error:\n{e}")
+                రోజువారీ అధ్యయన గంటలు:
+                {hours_per_day}
 
-        else:
+                పరీక్షకు మిగిలిన రోజులు:
+                {days_left}
 
-            st.warning(
-                "Please select an AI provider."
-            )
+                ప్రశ్న:
+                {question}
+
+                పూర్తిగా తెలుగులో సమాధానం ఇవ్వండి.
+                """
+
+            elif language == "हिन्दी":
+
+                prompt = f"""
+                छात्र का नाम: {student_name}
+
+                विषय:
+                {', '.join(subjects)}
+
+                प्रतिदिन अध्ययन घंटे:
+                {hours_per_day}
+
+                परीक्षा तक शेष दिन:
+                {days_left}
+
+                प्रश्न:
+                {question}
+
+                केवल हिंदी में उत्तर दें।
+                """
+
+            response = llm.invoke(prompt)
+
+            st.success(response.content)
+
+        except Exception as e:
+
+            st.error(f"AI Error: {e}")
+
+    else:
+
+        st.warning("Please select an AI provider.")
         # Onboard instruction panel
         st.info(translations[language]["home_message"])
         st.image(
